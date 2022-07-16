@@ -10,6 +10,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script
       src="https://kit.fontawesome.com/e3abcc0a77.js"
       crossorigin="anonymous"
@@ -27,10 +28,10 @@
       <div class="weather-app-wrapper">
         <div class="weather-app">
           <div class="space">
-            <h1>Copenhagen</h1>
+            <h1 id="city"></h1>
             <ul>
               <li>Friday 05:00</li>
-              <li>Clear</li>
+              <li id="description"></li>
             </ul>
           </div>
           <div class="row">
@@ -42,16 +43,15 @@
                   class="float-start"
                 />
                 <div class="float-start">
-                  <strong>18</strong
+                  <strong id="temperature"></strong
                   ><small class="units">˚C|<a href="#">˚F</a></small>
                 </div>
               </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>Persipitation: 0%</li>
-                <li>Humidity: 73%</li>
-                <li>Wind: 7 km/h</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span> km/h</li>
               </ul>
             </div>
           </div>
