@@ -10,7 +10,7 @@ function dateFormat(timestamp) {
   }
 
   let days = [
-    'Sumday',
+    'Sunday',
     'Monday',
     'Tuethday',
     'Wednesday',
@@ -30,6 +30,8 @@ function displayTemperature(response) {
   let windElement = document.querySelector('#wind')
   let dateElement = document.querySelector('#date')
   let iconElement = document.querySelector('#icon')
+
+  celsiusTemp = response.data.main.temp
 
   tempElement.innerHTML = Math.round(response.data.main.temp)
   cityElement.innerHTML = response.data.name
@@ -57,7 +59,31 @@ function submitAction(event) {
   search(cityInputElement.value)
 }
 
-search('Copenhagen')
+function showFahrenheitTemp(event) {
+  event.preventDefault()
+  let fahrTemp = celsiusTemp * 1.8 + 32
+  celsiusLink.classList.remove('active')
+  fahrenheitLink.classList.add('active')
+  let tempElement = document.querySelector('#temperature')
+  tempElement.innerHTML = Math.round(fahrTemp)
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault()
+  let tempElement = document.querySelector('#temperature')
+  celsiusLink.classList.add('active')
+  fahrenheitLink.classList.remove('active')
+  tempElement.innerHTML = Math.round(celsiusTemp)
+}
+
+let celsiusTemp = null
 
 let form = document.querySelector('#search-form')
 form.addEventListener('submit', submitAction)
+
+let fahrenheitLink = document.querySelector('#fahrenheit-link')
+fahrenheitLink.addEventListener('click', showFahrenheitTemp)
+
+let celsiusLink = document.querySelector('#celsius-link')
+celsiusLink.addEventListener('click', showCelsiusTemp)
+search('Copenhagen')
