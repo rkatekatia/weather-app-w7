@@ -14,7 +14,7 @@ function dateFormat(timestamp) {
     'Monday',
     'Tuethday',
     'Wednesday',
-    'Tursday',
+    'Thursday',
     'Friday',
     'Saturday',
   ]
