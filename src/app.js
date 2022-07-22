@@ -22,6 +22,33 @@ function dateFormat(timestamp) {
   return `${day} ${hours}:${minutes}`
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector('#forecast')
+  let forecastHTML = `<div class="row">`
+  let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+        <div class="weather-forecast-day">${day}</div>
+        <img
+          src="http://openweathermap.org/img/wn/04d@2x.png"
+          alt=""
+          width="40"
+        />
+        <div class="weather-forecast-temps">
+          <span class="weather-forecast-temperature-max">20° </span>
+          <span class="weather-forecast-temperature-min">16° </span>
+        </div>
+      </div>
+  `
+  })
+
+  forecastHTML = forecastHTML + `</div>`
+  forecastElement.innerHTML = forecastHTML
+}
+
 function displayTemperature(response) {
   let tempElement = document.querySelector('#temperature')
   let cityElement = document.querySelector('#city')
@@ -86,4 +113,6 @@ fahrenheitLink.addEventListener('click', showFahrenheitTemp)
 
 let celsiusLink = document.querySelector('#celsius-link')
 celsiusLink.addEventListener('click', showCelsiusTemp)
+
 search('Copenhagen')
+displayForecast()
