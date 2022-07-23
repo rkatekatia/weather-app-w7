@@ -140,4 +140,22 @@ fahrenheitLink.addEventListener('click', showFahrenheitTemp)
 let celsiusLink = document.querySelector('#celsius-link')
 celsiusLink.addEventListener('click', showCelsiusTemp)
 
+function myLocation(position) {
+  let lat = position.coords.latitude
+  let lon = position.coords.longitude
+
+  let apiKey = '49b631c45785fe73d2a88477803dea22'
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+
+  axios.get(apiUrl).then(displayTemperature)
+}
+
+function getLocation(event) {
+  event.preventDefault()
+  navigator.geolocation.getCurrentPosition(myLocation)
+}
+
+let myLocationBtn = document.querySelector('#my-location')
+myLocationBtn.addEventListener('click', getLocation)
+
 search('Copenhagen')
